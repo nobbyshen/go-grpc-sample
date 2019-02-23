@@ -11,5 +11,4 @@ type Config struct {
 
 func init() {
 	fmt.Printf(" Init config \n")
-
 }
