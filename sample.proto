@@ -1,0 +1,42 @@
+syntax = "proto3";
+package pbSample;
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloReply {
+    string name = 1;
+}
+
+message MathInput {
+    float para1 = 1;
+}
+
+message MathResult {
+    float  result = 1;
+}
+service Greeter {
+    rpc SayHello(HelloRequest) returns(HelloReply) {
+        option (google.api.http) = {
+            get: "/sayhello"
+        };
+    }
+
+    rpc GetApps(google.protobuf.Empty) returns (HelloReply) {
+        option (google.api.http) = {
+            get: "/apps"
+        };
+    }
+}
+
+service MyMath {
+    rpc SquareRoot(MathInput) returns (MathResult) {
+        option (google.api.http) = {
+            get: "/SquareRoot"
+        };
+    }
+}
